@@ -1,0 +1,255 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none;
+}
+
+body {
+    background-color: #222;
+    padding: 10px;
+}
+
+.paint-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #f5f6f7;
+    border: 1px solid #1e1e1e;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Title Bar */
+.title-bar {
+    background-color: #ffffff;
+    padding: 4px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+.title-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.paint-icon { width: 14px; height: 14px; }
+.separator { color: #ccc; }
+.window-controls { display: flex; gap: 15px; font-size: 14px; padding-right: 5px;}
+.win-btn { cursor: pointer; color: #555; }
+.close-btn:hover { color: red; }
+
+/* Menu Tabs */
+.menu-bar {
+    background-color: #ffffff;
+    display: flex;
+    border-bottom: 1px solid #e5e5e5;
+}
+.menu-tab {
+    padding: 6px 15px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.menu-tab.active {
+    background-color: #f5f6f7;
+    border: 1px solid #e5e5e5;
+    border-bottom: 1px solid transparent;
+}
+.file-tab {
+    background-color: #1976d2;
+    color: white;
+    font-weight: bold;
+}
+
+/* Ribbon Interface */
+.ribbon {
+    background-color: #f5f6f7;
+    border-bottom: 1px solid #dadada;
+    display: flex;
+    padding: 5px;
+    gap: 2px;
+    align-items: stretch;
+}
+
+.ribbon-group {
+    border-right: 1px solid #e0e0e0;
+    padding: 0 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.group-label {
+    font-size: 11px;
+    color: #666;
+    margin-top: 4px;
+    text-align: center;
+}
+
+/* Buttons Styling */
+button {
+    background: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    border-radius: 2px;
+    padding: 2px;
+}
+button:hover {
+    background-color: #edd4b224;
+    border: 1px solid #e5c365;
+    background-color: #ffe8a6;
+}
+button.active {
+    background-color: #fce291;
+    border: 1px solid #e5c365;
+}
+
+.ribbon-btn-large {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 11px;
+    width: 48px;
+}
+.ribbon-btn-large .icon {
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+.ribbon-btn-small {
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 4px;
+    width: 100%;
+}
+
+/* Tools Grids */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 24px);
+    gap: 2px;
+}
+.tool-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Shapes Grid */
+.shapes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 22px);
+    gap: 2px;
+    border: 1px solid #ccc;
+    background: white;
+    padding: 2px;
+}
+.shape-btn {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* Colors Section */
+.colors-group {
+    display: flex;
+    flex-direction: row !important;
+    gap: 8px;
+}
+.color-display {
+    display: flex;
+    gap: 6px;
+}
+.color-box-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+}
+.color-box {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #777;
+    box-shadow: inset 0 0 2px white;
+}
+.color-box.active {
+    border-color: #0078d7;
+}
+
+.palette-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 14px);
+    grid-template-rows: repeat(2, 14px);
+    gap: 3px;
+    align-content: center;
+}
+.color-item {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #a0a0a0;
+    cursor: pointer;
+}
+.color-item:hover {
+    border-color: black;
+}
+
+/* Hidden Select Style */
+.size-selector-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.hidden-select {
+    margin-top: 2px;
+    font-size: 11px;
+}
+
+/* Workspace */
+.workspace {
+    background-color: #eceff4;
+    padding: 20px;
+    overflow: auto;
+    height: 550px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.canvas-container {
+    background: white;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
+}
+
+canvas {
+    display: block;
+    cursor: crosshair;
+    background-color: #ffffff;
+}
+
+/* Status Bar */
+.status-bar {
+    background-color: #f0f0f0;
+    border-top: 1px solid #d9d9d9;
+    padding: 2px 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #333;
+}
+.status-left, .status-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.status-sep { color: #ccc; }
+.zoom-slider { width: 80px; }

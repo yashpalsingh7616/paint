@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untitled - Paint</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="paint-container">
+        <!-- Window Title Bar -->
+        <div class="title-bar">
+            <div class="title-left">
+                <img src="https://cdn-icons-png.flaticon.com/128/5806/5806318.png" class="paint-icon" alt="icon">
+                <span class="separator">|</span>
+                <span class="title-text">Untitled - Paint</span>
+            </div>
+            <div class="window-controls">
+                <span class="win-btn">—</span>
+                <span class="win-btn">❐</span>
+                <span class="win-btn close-btn">✕</span>
+            </div>
+        </div>
+
+        <!-- Menu Bar Tabs -->
+        <div class="menu-bar">
+            <span class="menu-tab file-tab">File</span>
+            <span class="menu-tab active">Home</span>
+            <span class="menu-tab">View</span>
+        </div>
+
+        <!-- Ribbon Toolbar (100% Same to Same Look) -->
+        <div class="ribbon">
+            <!-- Clipboard Group -->
+            <div class="ribbon-group">
+                <div class="tools-grid-vertical">
+                    <button class="ribbon-btn-large"><span class="icon">📋</span>Paste</button>
+                    <div class="sub-actions">
+                        <button class="ribbon-btn-small">✂️ Cut</button>
+                        <button class="ribbon-btn-small">📄 Copy</button>
+                    </div>
+                </div>
+                <div class="group-label">Clipboard</div>
+            </div>
+
+            <!-- Image Group -->
+            <div class="ribbon-group">
+                <div class="image-tools">
+                    <button class="ribbon-btn-large"><span class="icon">⬚</span>Select</button>
+                    <div class="image-sub-tools">
+                        <button class="ribbon-btn-small">◧ Crop</button>
+                        <button class="ribbon-btn-small">⤢ Resize</button>
+                        <button class="ribbon-btn-small">↻ Rotate</button>
+                    </div>
+                </div>
+                <div class="group-label">Image</div>
+            </div>
+
+            <!-- Tools Group -->
+            <div class="ribbon-group">
+                <div class="tools-grid" id="tools-panel">
+                    <button class="tool-btn active" data-tool="pencil" title="Pencil">✏️</button>
+                    <button class="tool-btn" data-tool="bucket" title="Fill with color">🪣</button>
+                    <button class="tool-btn" data-tool="text" title="Text">🅰</button>
+                    <button class="tool-btn" data-tool="eraser" title="Eraser">🧽</button>
+                    <button class="tool-btn" data-tool="picker" title="Color picker">🧪</button>
+                    <button class="tool-btn" data-tool="zoom" title="Magnifier">🔍</button>
+                </div>
+                <div class="group-label">Tools</div>
+            </div>
+
+            <!-- Brushes -->
+            <div class="ribbon-group">
+                <button class="ribbon-btn-large" id="brush-dropdown">
+                    <span class="icon">🖌️</span>Brushes ▾
+                </button>
+                <div class="group-label">Brushes</div>
+            </div>
+
+            <!-- Shapes Group -->
+            <div class="ribbon-group">
+                <div class="shapes-container">
+                    <div class="shapes-grid" id="shapes-panel">
+                        <button class="shape-btn" data-shape="line" title="Line">╱</button>
+                        <button class="shape-btn" data-shape="rectangle" title="Rectangle">▭</button>
+                        <button class="shape-btn" data-shape="circle" title="Oval">◯</button>
+                        <button class="shape-btn" data-shape="triangle" title="Triangle">△</button>
+                        <button class="shape-btn" data-shape="arrow" title="Right Arrow">⇨</button>
+                        <button class="shape-btn" data-shape="star" title="Star">⭐</button>
+                    </div>
+                    <div class="shape-options">
+                        <button class="ribbon-btn-small"> Outline ▾</button>
+                        <button class="ribbon-btn-small"> Fill ▾</button>
+                    </div>
+                </div>
+                <div class="group-label">Shapes</div>
+            </div>
+
+            <!-- Size Selector -->
+            <div class="ribbon-group">
+                <div class="size-selector-container">
+                    <button class="ribbon-btn-large" id="size-btn">
+                        <span class="icon">≡</span>Size ▾
+                    </button>
+                    <select id="line-width" class="hidden-select">
+                        <option value="2">1px</option>
+                        <option value="5" selected>3px</option>
+                        <option value="8">5px</option>
+                        <option value="12">8px</option>
+                    </select>
+                </div>
+                <div class="group-label">Size</div>
+            </div>
+
+            <!-- Colors Group -->
+            <div class="ribbon-group colors-group">
+                <div class="color-display">
+                    <div class="color-box-wrapper">
+                        <div class="color-box active" id="color1-preview" style="background: #000000;"></div>
+                        <span>Color 1</span>
+                    </div>
+                    <div class="color-box-wrapper">
+                        <div class="color-box" id="color2-preview" style="background: #ffffff;"></div>
+                        <span>Color 2</span>
+                    </div>
+                </div>
+                
+                <div class="palette-grid" id="palette">
+                    <!-- Row 1: Classic Colors -->
+                    <div class="color-item" style="background: #000000;" data-color="#000000"></div>
+                    <div class="color-item" style="background: #7f7f7f;" data-color="#7f7f7f"></div>
+                    <div class="color-item" style="background: #880015;" data-color="#880015"></div>
+                    <div class="color-item" style="background: #ed1c24;" data-color="#ed1c24"></div>
+                    <div class="color-item" style="background: #ff7f27;" data-color="#ff7f27"></div>
+                    <div class="color-item" style="background: #fff200;" data-color="#fff200"></div>
+                    <div class="color-item" style="background: #22b14c;" data-color="#22b14c"></div>
+                    <div class="color-item" style="background: #00a2e8;" data-color="#00a2e8"></div>
+                    <div class="color-item" style="background: #3f48cc;" data-color="#3f48cc"></div>
+                    <div class="color-item" style="background: #a349a4;" data-color="#a349a4"></div>
+                    <!-- Row 2 -->
+                    <div class="color-item" style="background: #ffffff;" data-color="#ffffff"></div>
+                    <div class="color-item" style="background: #c3c3c3;" data-color="#c3c3c3"></div>
+                    <div class="color-item" style="background: #b97a57;" data-color="#b97a57"></div>
+                    <div class="color-item" style="background: #ffaec9;" data-color="#ffaec9"></div>
+                    <div class="color-item" style="background: #ffc90e;" data-color="#ffc90e"></div>
+                    <div class="color-item" style="background: #efe4b0;" data-color="#efe4b0"></div>
+                    <div class="color-item" style="background: #b5e61d;" data-color="#b5e61d"></div>
+                    <div class="color-item" style="background: #99d9ea;" data-color="#99d9ea"></div>
+                    <div class="color-item" style="background: #7092be;" data-color="#7092be"></div>
+                    <div class="color-item" style="background: #c8bfe7;" data-color="#c8bfe7"></div>
+                </div>
+
+                <div class="edit-colors">
+                    <button class="ribbon-btn-small">🎨 Edit<br>colors</button>
+                </div>
+                <div class="group-label">Colors</div>
+            </div>
+        </div>
+
+        <!-- Canvas Workspace Area -->
+        <div class="workspace">
+            <div class="canvas-container">
+                <canvas id="paintCanvas" width="800" height="500"></canvas>
+            </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-left">
+                <span id="coords">📍 0, 0px</span>
+                <span class="status-sep">|</span>
+                <span id="canvas-size">📐 800 × 500px</span>
+            </div>
+            <div class="status-right">
+                <span>100%</span>
+                <input type="range" min="10" max="200" value="100" class="zoom-slider">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
